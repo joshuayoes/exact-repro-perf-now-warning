@@ -1,0 +1,12 @@
+test "the banked value is a duration: two runs of 3 s and 2 s bank 5000 ms"
+  tap "toggle"
+  clock +3000
+  tap "toggle"
+  expect text "banked" == "3000"
+  clock +10000
+  tap "toggle"
+  clock +2000
+  tap "toggle"
+  expect text "banked" == "5000"
+  tap "reset"
+  expect text "banked" == "0"

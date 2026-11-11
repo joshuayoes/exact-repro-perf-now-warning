@@ -1,0 +1,34 @@
+shape Reply
+  ok: bool
+
+routes nav
+  home "/"
+
+component Stopwatch
+  state running = false
+  state start = 0
+  state banked = 0
+  mutation wrote as shape Reply
+  action toggle
+    if running
+      let total = banked + performanceNow() - start  // warns; banked + (performanceNow() - start) does not
+      banked = total
+      running = false
+    else
+      start = performanceNow()
+      running = true
+  action reset
+    banked = 0
+  action save
+    send wrote = keep(banked)
+  view
+    main testId="root" navigationKey=`${top(nav).id}` width="100%" height="100%"
+      for e in stack(nav) key=e.id
+        column navigationKey=`${e.id}` position="absolute" inset=0 padding=16 gap=12
+          text `${banked}` font-variant-numeric="tabular-nums" testId="banked"
+          button press=toggle testId="toggle"
+            text (running ? "Stop" : "Start")
+          button press=reset testId="reset"
+            text "Reset"
+          button press=save testId="save"
+            text "Save"

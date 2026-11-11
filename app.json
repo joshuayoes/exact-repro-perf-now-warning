@@ -1,0 +1,20 @@
+{
+  "$schema": "../exact/scripts/app.schema.json",
+  "name": "Perf Now Warning",
+  "short_name": "Perf Now Warning",
+  "id": "com.example.perf-now-warning-14bf6f",
+  "start_url": "/",
+  "display": "standalone",
+  "app": {
+    "id": "com.example.perf-now-warning-14bf6f",
+    "name": "Perf Now Warning"
+  },
+  "host": {
+    "web": {}
+  },
+  "deploy": {
+    "store": {
+      "web": "0"
+    }
+  }
+}
