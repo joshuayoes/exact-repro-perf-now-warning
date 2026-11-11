@@ -1,5 +1,7 @@
 # `type-performance-now-persisted` on a banked duration
 
+Reported in [expo/exact#102](https://github.com/expo/exact/issues/102).
+
 A stopwatch banks elapsed time across Stop and Start and has a Reset. `app.test.contract` shows the
 banked value is a duration: runs of 3 s and 2 s, with 10 s between them, bank 5000 ms. The compiler
 still warns that the value sent to `keep` is computed from `performanceNow()`, and `verify` counts
